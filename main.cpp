@@ -29,7 +29,16 @@ int main(int argc, char **argv) {
 	
 	char message[86] = {'0'}; // 訊息 (目前長度不包括 mac 以及 etherType 長度是14)
 	
-	while (std::cin.getline(message, 84)) {
+	while (std::cin.getline(message, 86)) {
+		
+		// 空輸入
+		bool count = 0;
+		for (int i=14; i < 100; i++) {
+			if (message[i] == '0') {
+				count++;
+			}
+		}
+		if (count == 86) continue;
 		
 		/**
 		 * 前六 (index 0 ~ 5) -> 目標mac位址
@@ -56,12 +65,15 @@ int main(int argc, char **argv) {
 		}
 
 		// 把舊訊息洗掉
-		for (int i=0; i < 86; i++) {
-			message[i] = '0';
+		for (int i=0; i < 100; i++) {
+			if (i < 86) {
+				message[i] = '\0';
+			}
+			packet[i] = '\0';
 		}
 
-		// 清空輸入介面，相當於 "cls"
-		for (int i=0; i < 50; i++) {
+		// 整理一下介面
+		for (int i=0; i < 3; i++) {
 			std::cout << std::endl;
 		}
 

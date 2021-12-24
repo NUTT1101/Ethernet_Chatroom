@@ -30,11 +30,12 @@ int main(int argc, char **argv) {
         return -1;
     }
 
+    // 介面整理
     for (int i=0; i < 50; i++) {
-			std::cout << std::endl;
+		std::cout << std::endl;
 	}
 
-	while((res = pcap_next_ex(fp, &header, &pkt_data)) >= 0) {
+	while ((res = pcap_next_ex(fp, &header, &pkt_data)) >= 0) {
 
 		if(res == 0) continue; // 連線逾時
 
@@ -72,7 +73,7 @@ int main(int argc, char **argv) {
 		std::cout << "----------------" << std::endl;
 	}
 
-	if(res == -1) {
+	if (res == -1) {
 		fprintf(stderr, "Error reading the packets: %s\n", pcap_geterr(fp));
 		return -1;
 	}
