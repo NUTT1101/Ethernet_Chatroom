@@ -32,13 +32,17 @@ int main(int argc, char **argv) {
 	while (std::cin.getline(message, 86)) {
 		
 		// 空輸入
-		bool count = 0;
-		for (int i=14; i < 100; i++) {
-			if (message[i] == '0') {
+		int count = 0;
+		for (int i=0; i < 86; i++) {
+			if ((int) message[i] == 0) {
 				count++;
 			}
 		}
-		if (count == 86) continue;
+		
+		if (count == 86) {
+			std::cout << "what do you want to say? ";
+			continue;
+		}
 		
 		/**
 		 * 前六 (index 0 ~ 5) -> 目標mac位址
