@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/C/mingw64/x86_64-w64-mingw32/include/QT/QtWidgets",
+                "C:/C/mingw64/x86_64-w64-mingw32/include/QT",
+                "C:/C/mingw64/x86_64-w64-mingw32/include/QT/QtGui",
+                "C:/C/mingw64/x86_64-w64-mingw32/include/QT/QtCore",
+                "${workspaceFolder}/api/npcap/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\C\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14"
+        }
+    ],
+    "version": 4
+}
