@@ -10,24 +10,30 @@ OpenButtonClick::~OpenButtonClick() {};
 
 void OpenButtonClick::openInterface() {
     QMap<QString, QString> allDevices = menu->getAllDevicesMap();
-    QString interfaceName = menu->getInterfaceMenu()->currentText();
+    QString selectInterfaceDes = menu->getInterfaceMenu()->currentText();
+    QString selectInterfaceName = allDevices[selectInterfaceDes];
 
-    QString select_interface = allDevices[interfaceName];
-    char *open_interface = (char *) select_interface;
+    char open_interface[100];
+    char errbuf[100];
+
+    for (int i=0; i < 100; i++) {
+        open_interface[i] = (char) selectInterfaceName.at(i).unicode();
+    }
     
     /* 打開要監聽的介面 */
-	this->opened_interface = pcap_open(open_interface,			// 監聽設備名稱
+	this->openedInterface = pcap_open(open_interface,			// 監聽設備名稱
 						100,				// portion of the packet to capture (only the first 100 bytes)
 						PCAP_OPENFLAG_PROMISCUOUS, 	// promiscuous mode
 						1000,				// 讀取最大逾時
 						NULL,				// authentication on the remote machine
-						errBuffer				// 錯誤訊息存放
+						errbuf				// 錯誤訊息存放
                         );
-
-    if (open_interface != NULL) {
+                        
+    if (this->openedInterface != NULL) {
         QLabel *l = new QLabel("ok");
         l->setFont(QFont("Times", 10, QFont::Bold));
         l->show();
+        pcap_close(this->openedInterface);
     }
 }
 

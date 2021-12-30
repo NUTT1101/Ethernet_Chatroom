@@ -5,8 +5,7 @@ class OpenButtonClick : public QObject {
     Q_OBJECT
 
     private:
-        pcap_t *opened_interface;
-        char *errBuffer;
+        pcap_t *openedInterface;
 
     public slots:
         void openInterface();        
@@ -14,4 +13,5 @@ class OpenButtonClick : public QObject {
     public:
         OpenButtonClick();
         ~OpenButtonClick();
+        pcap_t *getOpenedInterface();
 };
