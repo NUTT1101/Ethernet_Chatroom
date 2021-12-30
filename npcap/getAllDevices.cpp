@@ -1,10 +1,7 @@
 #include <pcap.h>
-#include <QStringList>
 #include <QMap>
 #include <QString>
 #include <QVariant>
-
-char error = -1;
 
 QMap<QString, QString> getAllDevices() {
     char errBuf[PCAP_ERRBUF_SIZE];

@@ -2,8 +2,6 @@
 #include <string>
 #include <sstream>
 
-#include "SelectDevice.cpp"
-
 #include <pcap.h>
 
 int main(int argc, char **argv) {	

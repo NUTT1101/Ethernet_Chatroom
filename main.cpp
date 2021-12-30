@@ -1,29 +1,54 @@
+#include "global.hpp"
 #include <pcap.h>
 #include <QApplication>
 #include <QWidget>
-#include <QLabel>
-#include <QMouseEvent>
-#include "MainWindow.cpp"
-#include "./widget/SendBar.cpp"
-#include "./widget/InterfaceDropDownMenu.cpp"
-#include "./widget/ChatRoom.cpp"
 #include <QGridLayout>
+#include "./event/OpenButtonClick.cpp"
+
+OpenButtonClick::OpenButtonClick() {};
+OpenButtonClick::~OpenButtonClick() {};
+
+void OpenButtonClick::openInterface() {
+    QMap<QString, QString> allDevices = menu->getAllDevicesMap();
+    QString interfaceName = menu->getInterfaceMenu()->currentText();
+
+    QString select_interface = allDevices[interfaceName];
+    char *open_interface = (char *) select_interface;
+    
+    /* 打開要監聽的介面 */
+	this->opened_interface = pcap_open(open_interface,			// 監聽設備名稱
+						100,				// portion of the packet to capture (only the first 100 bytes)
+						PCAP_OPENFLAG_PROMISCUOUS, 	// promiscuous mode
+						1000,				// 讀取最大逾時
+						NULL,				// authentication on the remote machine
+						errBuffer				// 錯誤訊息存放
+                        );
+
+    if (open_interface != NULL) {
+        QLabel *l = new QLabel("ok");
+        l->setFont(QFont("Times", 10, QFont::Bold));
+        l->show();
+    }
+}
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-	
-    MainWindow *mainWindow = new MainWindow();
+    
+    mainWindow = new MainWindow();
+    sendBar = new SendBar(mainWindow);
+    menu = new InterfaceDropDownMenu(mainWindow);
+    chatRoom = new ChatRoom(mainWindow);
 
-    SendBar *sendBar = new SendBar(mainWindow);
-    InterfaceDropDownMenu *menu = new InterfaceDropDownMenu(mainWindow);
-    ChatRoom *chatRomm = new ChatRoom(mainWindow);
+    OpenButtonClick op;
+    QObject::connect(menu->getOpenButton(), SIGNAL(clicked()), &op, SLOT(openInterface()));
 
     QGridLayout *layout = new QGridLayout();
     layout->addWidget(menu, 0, 0, Qt::AlignTop);
-    layout->addWidget(chatRomm, 1, 0, Qt::AlignLeft);
+    layout->addWidget(chatRoom, 1, 0, Qt::AlignLeft);
     layout->addWidget(sendBar, 2, 0, Qt::AlignBottom);
     mainWindow->setLayout(layout);
     
     mainWindow->show();
     return app.exec();
 }
+

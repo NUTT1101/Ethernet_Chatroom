@@ -3,8 +3,6 @@
 
 #include <pcap.h>
 
-#include "SelectDevice.cpp"
-
 int main(int argc, char **argv) {
 	pcap_t *fp; // 監聽設備
 	char errbuf[PCAP_ERRBUF_SIZE]; // 錯誤訊息

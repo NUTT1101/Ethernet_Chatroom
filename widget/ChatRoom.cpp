@@ -5,20 +5,24 @@
 #include <QListView>
 #include <QGridLayout>
 
+#include <QThread>
+
 class ChatRoom : public QWidget {
 
+    private:
+        QStringList message;
+        
     public:
         ChatRoom(QWidget *parent) {
-            QStringList message;
-            
-            QAbstractItemModel *model = new QStringListModel(message);
+
+            QAbstractItemModel *model = new QStringListModel(this->message);
             
             QListView *view = new QListView;
         
-            view->setFixedWidth(1000);
-            view->setFixedHeight(350);
             view->setEditTriggers(QAbstractItemView::NoEditTriggers);
             view->setModel(model);
+            view->setFixedWidth(1000);
+            view->setFixedHeight(350);
             
             QGridLayout *layout = new QGridLayout();
             layout->addWidget(view);
@@ -26,5 +30,4 @@ class ChatRoom : public QWidget {
             this->setLayout(layout);
             this->setParent(parent);
         }
-
 };
