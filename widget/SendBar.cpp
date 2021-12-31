@@ -4,7 +4,6 @@
 #include <QLineEdit>
 
 class SendBar : public QWidget {
-    
     public:
         SendBar(QWidget *parent) {
             QGridLayout *layout = new QGridLayout;
@@ -24,5 +23,4 @@ class SendBar : public QWidget {
             this->setLayout(layout);
             this->setParent(parent);
         }
-
 };

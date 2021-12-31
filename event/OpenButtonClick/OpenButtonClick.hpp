@@ -1,5 +1,6 @@
 #include <QObject>
 #include <pcap.h>
+#include <QMessageBox>
 
 class OpenButtonClick : public QObject {
     Q_OBJECT
@@ -13,5 +14,5 @@ class OpenButtonClick : public QObject {
     public:
         OpenButtonClick();
         ~OpenButtonClick();
-        pcap_t *getOpenedInterface();
+        pcap_t getOpenedInterface();
 };

@@ -3,6 +3,7 @@
 #include <QAbstractItemModel>
 #include <QStringListModel>
 #include <QListView>
+#include <QListWidget>
 #include <QGridLayout>
 
 #include <QThread>
@@ -14,14 +15,17 @@ class ChatRoom : public QWidget {
         
     public:
         ChatRoom(QWidget *parent) {
+            QListWidget *view = new QListWidget;
+            view->setAutoScroll(true);
 
-            QAbstractItemModel *model = new QStringListModel(this->message);
-            
-            QListView *view = new QListView;
-        
+            for (int i=0; i < 1000; i++) {
+                view->addItem(QVariant(i).toString());
+            }
+
+
             view->setEditTriggers(QAbstractItemView::NoEditTriggers);
-            view->setModel(model);
-            view->setFixedWidth(1000);
+
+            view->setFixedWidth(800);
             view->setFixedHeight(350);
             
             QGridLayout *layout = new QGridLayout();
