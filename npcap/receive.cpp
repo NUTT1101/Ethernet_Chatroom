@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
         }
 		
         // 看看是不是自己的封包
-        if (d_and_s_mac != "ffffffffffffffffffffffff") continue;			
+        if (d_and_s_mac != "ffffffffffffaabbccddeeff") continue;			
 
         std::cout << "----------------" << std::endl;
         std::cout << "source MAC address: " << source_mac << std::endl << "message: ";

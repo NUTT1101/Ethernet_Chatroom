@@ -18,20 +18,22 @@ void SendButtonClick::sendMessage() {
         for (int i=0; i < 6; i++) {
 			packet[i] = 0xff;
 		}
-        packet[6] = 0xAA;
-        packet[7] = 0xBB;
-        packet[8] = 0xCC;
-        packet[9] = 0xDD;
-        packet[10] = 0xEE;
-        packet[11] = 0xFF;
+        packet[6] = 0xaa;
+        packet[7] = 0xbb;
+        packet[8] = 0xcc;
+        packet[9] = 0xdd;
+        packet[10] = 0xee;
+        packet[11] = 0xff;
 		
         packet[12] = 0xff;
 		packet[13] = 1; // 組別編號
 		
 		// 把輸入的訊息裝進封包內
+        QByteArray message_utf8 = message.toUtf8();
+        
 		for (int i = 14; i < 100; i++) {
-			if (message[i - 14] != '\0') {
-				packet[i] = (u_char) message.at(i-14).unicode();
+			if (message_utf8[i - 14] != '\0') {
+				packet[i] = (char) message_utf8.at(i-14);
 			}
 		}
 

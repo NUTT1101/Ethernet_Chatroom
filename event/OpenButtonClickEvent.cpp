@@ -7,7 +7,7 @@ OpenButtonClick::~OpenButtonClick() {};
 void OpenButtonClick::openInterface() {
     if (global_openedInterface != nullptr) {
         QMessageBox::information(mainWindow, "Information", 
-            "<h3>The interface was opened!</h3>", QMessageBox::Ok);
+            "<h3>這個介面正在被監聽!</h3>", QMessageBox::Ok);
         return;
     }
     
@@ -33,7 +33,7 @@ void OpenButtonClick::openInterface() {
 
     if (this->openedInterface != NULL) {
         QMessageBox::information(mainWindow, "Information", 
-            "<h3>The interface <b>Opened</b> succussed!</h3>", QMessageBox::Ok);
+            "<h3>介面成功開啟並監聽中.....</h3>", QMessageBox::Ok);
         global_openedInterface = this->openedInterface;
     }
 
