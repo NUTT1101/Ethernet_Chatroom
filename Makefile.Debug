@@ -126,9 +126,8 @@ compiler_clean: compiler_moc_predefs_clean
 ####### Compile
 
 debug/main.o: main.cpp global.hpp \
-		widget/MainWindow.cpp \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/Qlabel \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qtguiglobal.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
@@ -154,23 +153,20 @@ debug/main.o: main.cpp global.hpp \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qtgui-config.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qtwidgets-config.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qwidget.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs_impl.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs_win.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/qobject.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qstringliteral.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtCore/qobject.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs_impl.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qlist.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
@@ -189,10 +185,16 @@ debug/main.o: main.cpp global.hpp \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qvarlengtharray.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qcontainerfwd.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qobject_impl.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtCore/qeventloop.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtCore/qsize.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qmargins.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtGui/qcursor.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qwidget.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qpaintdevice.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qrect.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/qsize.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qpalette.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qcolor.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qrgb.h \
@@ -216,7 +218,6 @@ debug/main.o: main.cpp global.hpp \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qfontmetrics.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qfontinfo.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qsizepolicy.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtGui/qcursor.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qkeysequence.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qevent.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qvariant.h \
@@ -232,24 +233,42 @@ debug/main.o: main.cpp global.hpp \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/Qwidget \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QPushButton \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
-		widget/SendBar.cpp \
+		../../../Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QWidget \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qboxlayout.h \
+		api/npcap/include/pcap.h \
+		api/npcap/include/pcap/pcap.h \
+		api/npcap/include/pcap/funcattrs.h \
+		api/npcap/include/pcap/compiler-tests.h \
+		api/npcap/include/pcap/pcap-inttypes.h \
+		api/npcap/include/pcap/socket.h \
+		api/npcap/include/pcap/bpf.h \
+		api/npcap/include/pcap/dlt.h \
+		widget/MainWindow.cpp \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/Qlabel \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/Qwidget \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QPushButton \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		widget/SendBar.cpp \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qpen.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtGui/QKeyEvent \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
 		widget/InterfaceDropDownMenu.cpp \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qcombobox.h \
@@ -267,39 +286,34 @@ debug/main.o: main.cpp global.hpp \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qabstractitemmodel.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/QMap \
-		api/npcap/include/pcap.h \
-		api/npcap/include/pcap/pcap.h \
-		api/npcap/include/pcap/funcattrs.h \
-		api/npcap/include/pcap/compiler-tests.h \
-		api/npcap/include/pcap/pcap-inttypes.h \
-		api/npcap/include/pcap/socket.h \
-		api/npcap/include/pcap/bpf.h \
-		api/npcap/include/pcap/dlt.h \
 		widget/ChatRoom.cpp \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/QAbstractItemModel \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/QStringListModel \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/qstringlistmodel.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QListView \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlistview.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractitemview.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qitemselectionmodel.h \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QListWidget \
+		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlistwidget.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/QThread \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qthread.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.15.2/mingw81_64/include/QtCore/qelapsedtimer.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/qeventloop.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
 		event/OpenButtonClickEvent.cpp \
 		event/OpenButtonClick/OpenButtonClick.cpp \
 		event/OpenButtonClick/OpenButtonClick.hpp \
-		../../../Qt/5.15.2/mingw81_64/include/QtCore/QObject
+		../../../Qt/5.15.2/mingw81_64/include/QtCore/QObject \
+		ThreadControl/ChatRoomControl.cpp \
+		ThreadControl/ChatRoomThread.cpp \
+		ThreadControl/ChatRoomThread.hpp \
+		event/CloseButtonClickEvent.cpp \
+		event/CloseButtonClick/CloseButtonClick.cpp \
+		event/CloseButtonClick/CloseButtonClick.hpp \
+		event/SendButtonClickEvent.cpp \
+		event/SendButtonClick/SendButtonClick.cpp \
+		event/SendButtonClick/SendButtonClick.hpp \
+		event/MessageLineEnterPressEvent.cpp \
+		event/MessageLineEnterPress/MessageLineEnterPress.cpp \
+		event/MessageLineEnterPress/MessageLineEnterPress.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o main.cpp
 
 ####### Install

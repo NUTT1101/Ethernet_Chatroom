@@ -1,7 +1,4 @@
 #include <Qwidget>
-#include <QStringList>
-#include <QAbstractItemModel>
-#include <QStringListModel>
 #include <QListView>
 #include <QListWidget>
 #include <QGridLayout>
@@ -11,27 +8,30 @@
 class ChatRoom : public QWidget {
 
     private:
-        QStringList message;
+        QListWidget *view = new QListWidget;
         
     public:
-        ChatRoom(QWidget *parent) {
-            QListWidget *view = new QListWidget;
-            view->setAutoScroll(true);
-
-            for (int i=0; i < 1000; i++) {
-                view->addItem(QVariant(i).toString());
-            }
-
-
-            view->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-            view->setFixedWidth(800);
-            view->setFixedHeight(350);
-            
-            QGridLayout *layout = new QGridLayout();
-            layout->addWidget(view);
-
-            this->setLayout(layout);
-            this->setParent(parent);
-        }
+        ChatRoom(QWidget *parent);
+        ~ChatRoom();
+        QListWidget *getChatRoom();
 };
+
+ChatRoom::ChatRoom(QWidget *parent) {
+    this->view->setFont(QFont("Microsoft JhengHei", 11));
+    this->view->addItem("🟢 頁面初始化完成!!!");
+    this->view->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    this->view->setFixedWidth(950);
+    this->view->setFixedHeight(350);
+    
+    QGridLayout *layout = new QGridLayout();
+    layout->addWidget(this->view);
+
+    this->setLayout(layout);
+    this->setParent(parent);
+}
+
+ChatRoom::~ChatRoom() {}
+
+QListWidget *ChatRoom::getChatRoom() {
+    return this->view;
+}

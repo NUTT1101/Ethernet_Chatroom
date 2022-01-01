@@ -1,13 +1,20 @@
 #include "./OpenButtonClick/OpenButtonClick.cpp"
+#include "ThreadControl/ChatRoomControl.cpp"
 
 OpenButtonClick::OpenButtonClick() {};
 OpenButtonClick::~OpenButtonClick() {};
 
 void OpenButtonClick::openInterface() {
+    if (global_openedInterface != nullptr) {
+        QMessageBox::information(mainWindow, "Information", 
+            "<h3>The interface was opened!</h3>", QMessageBox::Ok);
+        return;
+    }
+    
     QMap<QString, QString> allDevices = menu->getAllDevicesMap();
     QString selectInterfaceDes = menu->getInterfaceMenu()->currentText();
     QString selectInterfaceName = allDevices[selectInterfaceDes];
-
+    
     char open_interface[100];
     char errbuf[100];
 
@@ -29,4 +36,7 @@ void OpenButtonClick::openInterface() {
             "<h3>The interface <b>Opened</b> succussed!</h3>", QMessageBox::Ok);
         global_openedInterface = this->openedInterface;
     }
+
+    ChatRoomThread *c = new ChatRoomThread(chatRoom->getChatRoom());
+    c->start();
 }

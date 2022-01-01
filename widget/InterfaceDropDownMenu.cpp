@@ -22,6 +22,7 @@ class InterfaceDropDownMenu : public QWidget {
 
     public:
         InterfaceDropDownMenu(QWidget *parent);
+        ~InterfaceDropDownMenu();
         void menuSetup(QComboBox *menu, QMap<QString, QString> allDevices);
         QComboBox *getInterfaceMenu();
         QPushButton *getOpenButton();
@@ -30,7 +31,7 @@ class InterfaceDropDownMenu : public QWidget {
 };
 
 InterfaceDropDownMenu::InterfaceDropDownMenu(QWidget *parent) {
-    allDevices = this->getAllDevices();
+    this->allDevices = this->getAllDevices();
     
     this->menu->setFixedWidth(500);
     this->menu->setFixedHeight(30);
@@ -43,15 +44,17 @@ InterfaceDropDownMenu::InterfaceDropDownMenu(QWidget *parent) {
     this->closeButton->setFixedWidth(100);
     this->closeButton->setFixedHeight(30);
 
-    this->buttonLayout->addWidget(openButton, 0, 0);
-    this->buttonLayout->addWidget(closeButton, 0, 1);
+    this->buttonLayout->addWidget(this->openButton, 0, 0);
+    this->buttonLayout->addWidget(this->closeButton, 0, 1);
     
-    this->layout->addWidget(menu, 0, 0, Qt::AlignLeft);
-    this->layout->addLayout(buttonLayout, 0, 1, Qt::AlignLeft);
+    this->layout->addWidget(this->menu, 0, 0, Qt::AlignLeft);
+    this->layout->addLayout(this->buttonLayout, 0, 1, Qt::AlignLeft);
     
-    this->setLayout(layout);
+    this->setLayout(this->layout);
     this->setParent(parent);
 }
+
+InterfaceDropDownMenu::~InterfaceDropDownMenu() {}
 
 void InterfaceDropDownMenu::menuSetup(QComboBox *menu, QMap<QString, QString> allDevices) {
     int i=0;

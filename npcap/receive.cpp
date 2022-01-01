@@ -12,8 +12,6 @@ int main(int argc, char **argv) {
     struct pcap_pkthdr *header; // 封包表頭
     const u_char *pkt_data; // 封封內容資料
 
-   
-	char* selected_device = select_device(); // 選擇要監聽的介面
 
     /* 打開要監聽的介面 */
     if ( (fp= pcap_open(selected_device,

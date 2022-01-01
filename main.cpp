@@ -1,6 +1,9 @@
 #include "global.hpp"
 #include "./event/OpenButtonClickEvent.cpp"
 #include "./event/CloseButtonClickEvent.cpp"
+#include "./event/SendButtonClickEvent.cpp"
+#include "./event/MessageLineEnterPressEvent.cpp"
+
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
@@ -12,8 +15,13 @@ int main(int argc, char *argv[]) {
 
     OpenButtonClick openButton;
     CloseButtonClick closeButton;
+    SendButtonClick sendButton;
+    MessageLineEnterPress enterPress;
+    
     QObject::connect(menu->getOpenButton(), SIGNAL(clicked()), &openButton, SLOT(openInterface()));
     QObject::connect(menu->getCloseButton(), SIGNAL(clicked()), &closeButton, SLOT(closeInterface()));
+    QObject::connect(sendBar->getSendButton(), SIGNAL(clicked()), &sendButton, SLOT(sendMessage()));
+    QObject::connect(sendBar->getMessageLine(), SIGNAL(returnPressed()), &enterPress, SLOT(clickSendButton()));
 
     QGridLayout *layout = new QGridLayout();
     layout->addWidget(menu, 0, 0, Qt::AlignTop);
