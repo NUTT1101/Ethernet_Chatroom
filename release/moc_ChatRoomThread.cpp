@@ -1,5 +1,13 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'ChatRoomThread.hpp'
+**
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
 #include <memory>
-#include ".\ChatRoomThread.hpp"
+#include "../ThreadControl/ChatRoomThread.hpp"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

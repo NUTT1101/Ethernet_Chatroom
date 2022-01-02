@@ -1,4 +1,4 @@
-#include "./MessageLineEnterPress/MessageLineEnterPress.cpp"
+#include "./MessageLineEnterPress/MessageLineEnterPress.hpp"
 
 MessageLineEnterPress::MessageLineEnterPress() {}
 MessageLineEnterPress::~MessageLineEnterPress() {}

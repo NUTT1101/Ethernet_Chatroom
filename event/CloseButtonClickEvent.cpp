@@ -1,4 +1,4 @@
-#include "./CloseButtonClick/CloseButtonClick.cpp"
+#include "./CloseButtonClick/CloseButtonClick.hpp"
 
 CloseButtonClick::CloseButtonClick() {}
 CloseButtonClick::~CloseButtonClick() {}

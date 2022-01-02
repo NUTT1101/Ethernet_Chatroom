@@ -1,4 +1,4 @@
-#include "./OpenButtonClick/OpenButtonClick.cpp"
+#include "./OpenButtonClick/OpenButtonClick.hpp"
 #include "ThreadControl/ChatRoomControl.cpp"
 
 OpenButtonClick::OpenButtonClick() {};

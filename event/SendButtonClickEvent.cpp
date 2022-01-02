@@ -1,5 +1,6 @@
-#include "./SendButtonClick/SendButtonClick.cpp"
+#include "./SendButtonClick/SendButtonClick.hpp"
 #include "pcap.h"
+#include <ctime>
 
 SendButtonClick::SendButtonClick() {}
 SendButtonClick::~SendButtonClick() {}
@@ -30,10 +31,11 @@ void SendButtonClick::sendMessage() {
 		
 		// 把輸入的訊息裝進封包內
         QByteArray message_utf8 = message.toUtf8();
-        
-		for (int i = 14; i < 100; i++) {
-			if (message_utf8[i - 14] != '\0') {
-				packet[i] = (char) message_utf8.at(i-14);
+
+        packet[14] = message_utf8.size();
+		for (int i = 15; i < 100; i++) {
+			if (message_utf8[i - 15] != '\0') {
+				packet[i] = (char) message_utf8.at(i - 15);
 			}
 		}
 

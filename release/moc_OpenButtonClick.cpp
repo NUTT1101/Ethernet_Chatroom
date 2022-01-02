@@ -1,5 +1,13 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'OpenButtonClick.hpp'
+**
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
 #include <memory>
-#include ".\OpenButtonClick.hpp"
+#include "../event/OpenButtonClick/OpenButtonClick.hpp"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

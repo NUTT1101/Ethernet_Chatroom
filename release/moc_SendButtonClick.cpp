@@ -1,5 +1,13 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'SendButtonClick.hpp'
+**
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
 #include <memory>
-#include ".\SendButtonClick.hpp"
+#include "../event/SendButtonClick/SendButtonClick.hpp"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -58,7 +66,7 @@ static const uint qt_meta_data_SendButtonClick[] = {
 void SendButtonClick::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<SendButtonClick *>(_o); 
+        auto *_t = static_cast<SendButtonClick *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->sendMessage(); break;
@@ -78,20 +86,20 @@ QT_INIT_METAOBJECT const QMetaObject SendButtonClick::staticMetaObject = { {
 } };
 
 
-const QMetaObject *SendButtonClick::metaObject() const 
+const QMetaObject *SendButtonClick::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *SendButtonClick::qt_metacast(const char *_clname){
+void *SendButtonClick::qt_metacast(const char *_clname)
+{
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_SendButtonClick.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int SendButtonClick::qt_metacall(QMetaObject::Call _c, 
-int _id, void **_a)
+int SendButtonClick::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -102,7 +110,7 @@ int _id, void **_a)
         _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 1)
-            *reinterpret_cast<int*>(_a[0]) = -1;       
+            *reinterpret_cast<int*>(_a[0]) = -1;
         _id -= 1;
     }
     return _id;

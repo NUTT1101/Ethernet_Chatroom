@@ -1,5 +1,13 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'MessageLineEnterPress.hpp'
+**
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.2)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
 #include <memory>
-#include ".\MessageLineEnterPress.hpp"
+#include "../event/MessageLineEnterPress/MessageLineEnterPress.hpp"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -13,7 +21,7 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_MessageLineEnterPress_t {  
+struct qt_meta_stringdata_MessageLineEnterPress_t {
     QByteArrayData data[3];
     char stringdata0[39];
 };
@@ -24,12 +32,12 @@ struct qt_meta_stringdata_MessageLineEnterPress_t {
     )
 static const qt_meta_stringdata_MessageLineEnterPress_t qt_meta_stringdata_MessageLineEnterPress = {
     {
-QT_MOC_LITERAL(0, 0, 21), // "MessageLineEnterPress" 
-QT_MOC_LITERAL(1, 22, 15), // "clickSendButton"      
+QT_MOC_LITERAL(0, 0, 21), // "MessageLineEnterPress"
+QT_MOC_LITERAL(1, 22, 15), // "clickSendButton"
 QT_MOC_LITERAL(2, 38, 0) // ""
 
     },
-    "MessageLineEnterPress\0clickSendButton\0"       
+    "MessageLineEnterPress\0clickSendButton\0"
     ""
 };
 #undef QT_MOC_LITERAL
@@ -47,7 +55,7 @@ static const uint qt_meta_data_MessageLineEnterPress[] = {
        0,       // flags
        0,       // signalCount
 
- // slots: name, argc, parameters, tag, flags        
+ // slots: name, argc, parameters, tag, flags
        1,    0,   19,    2, 0x0a /* Public */,
 
  // slots: parameters
@@ -56,14 +64,13 @@ static const uint qt_meta_data_MessageLineEnterPress[] = {
        0        // eod
 };
 
-void MessageLineEnterPress::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)     
+void MessageLineEnterPress::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    if (_c == QMetaObject::InvokeMetaMethod) {       
-        auto *_t = static_cast<MessageLineEnterPress 
-*>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        auto *_t = static_cast<MessageLineEnterPress *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->clickSendButton(); break;        
+        case 0: _t->clickSendButton(); break;
         default: ;
         }
     }
@@ -98,13 +105,13 @@ int MessageLineEnterPress::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
-    if (_c == QMetaObject::InvokeMetaMethod) {       
+    if (_c == QMetaObject::InvokeMetaMethod) {
         if (_id < 1)
-            qt_static_metacall(this, _c, _id, _a);   
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 1)
-            *reinterpret_cast<int*>(_a[0]) = -1;     
+            *reinterpret_cast<int*>(_a[0]) = -1;
         _id -= 1;
     }
     return _id;

@@ -23,8 +23,8 @@ VS_VERSION_INFO VERSIONINFO
 				VALUE "FileDescription", "\0"
 				VALUE "FileVersion", "0.0.0.0\0"
 				VALUE "LegalCopyright", "\0"
-				VALUE "OriginalFilename", "ethernet_chatroom.exe\0"
-				VALUE "ProductName", "ethernet_chatroom\0"
+				VALUE "OriginalFilename", "Ethernet_Chatroom.exe\0"
+				VALUE "ProductName", "Ethernet_Chatroom\0"
 				VALUE "ProductVersion", "0.0.0.0\0"
 			END
 		END
