@@ -22,6 +22,7 @@ ChatRoom::ChatRoom(QWidget *parent) {
     this->view->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->view->setFixedWidth(950);
     this->view->setFixedHeight(350);
+    this->view->setWordWrap(true);
     
     QGridLayout *layout = new QGridLayout();
     layout->addWidget(this->view);

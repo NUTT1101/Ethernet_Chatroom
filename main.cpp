@@ -30,6 +30,16 @@ int main(int argc, char *argv[]) {
     mainWindow->setLayout(layout);
     
     mainWindow->show();
+
+    while (userName == "") {
+        QString name = QInputDialog::getText(mainWindow, "輸入欄", "輸入您的名字: ");
+        if (name.size() > 10) continue;
+        
+        for (int i=0; i < name.size(); i++) {
+            userName[i] = name.at(i).unicode();
+        }
+    }
+    
     return app.exec();
 }
 

@@ -7,7 +7,7 @@ OpenButtonClick::~OpenButtonClick() {};
 void OpenButtonClick::openInterface() {
     if (global_openedInterface != nullptr) {
         QMessageBox::information(mainWindow, "Information", 
-            "<h3>這個介面正在被監聽!</h3>", QMessageBox::Ok);
+            "<h3>有個介面已被開啟，無法完成此操作!</h3>", QMessageBox::Ok);
         return;
     }
     
@@ -24,7 +24,7 @@ void OpenButtonClick::openInterface() {
     
     /* 打開要監聽的介面 */
 	this->openedInterface = pcap_open(open_interface,			// 監聽設備名稱
-						100,				// portion of the packet to capture (only the first 100 bytes)
+						1500,				// portion of the packet to capture (only the first 100 bytes)
 						PCAP_OPENFLAG_PROMISCUOUS, 	// promiscuous mode
 						1000,				// 讀取最大逾時
 						NULL,				// authentication on the remote machine
@@ -33,7 +33,7 @@ void OpenButtonClick::openInterface() {
 
     if (this->openedInterface != NULL) {
         QMessageBox::information(mainWindow, "Information", 
-            "<h3>介面成功開啟並監聽中.....</h3>", QMessageBox::Ok);
+            "<h3>介面成功開啟介面，你現在可以開始聊天了!</h3>", QMessageBox::Ok);
         global_openedInterface = this->openedInterface;
     }
 

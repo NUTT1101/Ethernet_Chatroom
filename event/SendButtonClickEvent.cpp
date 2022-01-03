@@ -14,11 +14,18 @@ void SendButtonClick::sendMessage() {
             return;
         }
 
-        u_char packet[100] = {'\0'};
+        if (message.size() > 1584) {
+            QMessageBox::warning(mainWindow, "warning", 
+                "<h3>發送的文字上限不能超過一千五個字</h3>", QMessageBox::Ok);
+            return;
+        }
+
+        u_char packet[1500] = {'\0'};
 
         for (int i=0; i < 6; i++) {
 			packet[i] = 0xff;
 		}
+
         packet[6] = 0xaa;
         packet[7] = 0xbb;
         packet[8] = 0xcc;
@@ -30,16 +37,20 @@ void SendButtonClick::sendMessage() {
 		packet[13] = 1; // 組別編號
 		
 		// 把輸入的訊息裝進封包內
+        message = userName + "： " + message;
+
         QByteArray message_utf8 = message.toUtf8();
 
-        packet[14] = message_utf8.size();
-		for (int i = 15; i < 100; i++) {
-			if (message_utf8[i - 15] != '\0') {
-				packet[i] = (char) message_utf8.at(i - 15);
-			}
+        int message_length = message_utf8.size();
+
+        packet[14] = message_length / 255;
+        packet[15] = message_length % 255;
+        
+		for (int i = 16; i < message_length + 16; i++) {
+			packet[i] = (char) message_utf8.at(i - 16);
 		}
 
-        pcap_sendpacket(global_openedInterface, packet, 100);
+        pcap_sendpacket(global_openedInterface, packet, message_length + 16);
 
         sendBar->getMessageLine()->setText("");
         chatRoom->getChatRoom()->scrollToBottom();
