@@ -1,29 +1,29 @@
 #include <Qwidget>
 #include <QListView>
-#include <QListWidget>
+#include <QTextBrowser>
 #include <QGridLayout>
+#include <QScrollBar>
 
 #include <QThread>
 
 class ChatRoom : public QWidget {
 
     private:
-        QListWidget *view = new QListWidget;
+        QTextBrowser *view = new QTextBrowser;
         
     public:
         ChatRoom(QWidget *parent);
         ~ChatRoom();
-        QListWidget *getChatRoom();
+        QTextBrowser *getChatRoom();
         void sendMessage(std::string message);
 };
 
 ChatRoom::ChatRoom(QWidget *parent) {
-    this->view->setFont(QFont("Microsoft JhengHei", 9));
-    this->view->addItem("🟢 頁面初始化完成!!!");
-    this->view->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    this->view->setFont(QFont("Microsoft JhengHei", 10));
+    this->view->append("🟢 頁面初始化完成!!!");
+
     this->view->setFixedWidth(950);
     this->view->setFixedHeight(350);
-    this->view->setWordWrap(true);
     
     QGridLayout *layout = new QGridLayout();
     layout->addWidget(this->view);
@@ -34,12 +34,10 @@ ChatRoom::ChatRoom(QWidget *parent) {
 
 ChatRoom::~ChatRoom() {}
 
-QListWidget *ChatRoom::getChatRoom() {
+QTextBrowser *ChatRoom::getChatRoom() {
     return this->view;
 }
 
 void ChatRoom::sendMessage(std::string message) {
-    this->view->addItem(QString::fromStdString(message));
-    
-    this->view->scrollToBottom();
+    this->view->append(QString::fromStdString(message));
 }

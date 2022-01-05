@@ -31,7 +31,6 @@ int main(int argc, char *argv[]) {
     QObject::connect(sendBar->getThumbSupButton(), SIGNAL(clicked()), &thumpSupClick, SLOT(sendThumbSup()));
     QObject::connect(sendBar->getEmojisButton(), SIGNAL(clicked()), &emojiClick, SLOT(selectEmoji()));
     QObject::connect(sendBar->getSelectFileButton(), SIGNAL(clicked()), &selectFileClick, SLOT(selectFile()));
-    
 
     QGridLayout *layout = new QGridLayout();
     layout->addWidget(menu, 0, 0, Qt::AlignTop);

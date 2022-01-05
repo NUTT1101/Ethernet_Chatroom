@@ -1,14 +1,15 @@
 #include <QThread>
-#include <QListWidget>
+#include <QTextBrowser>
+#include <pcap.h>
 
 class ChatRoomThread : public QThread {
     Q_OBJECT
 
     private:
-        QListWidget *view;
+        QTextBrowser *view;
 
     public: 
-        ChatRoomThread(QListWidget *view);
+        ChatRoomThread(QTextBrowser *view);
         ~ChatRoomThread();
 
     protected:

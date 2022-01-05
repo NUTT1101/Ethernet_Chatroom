@@ -62,6 +62,7 @@
         "qstring": "cpp",
         "qlistwidget": "cpp",
         "strstream": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "qtextbrowser": "cpp"
     }
 }

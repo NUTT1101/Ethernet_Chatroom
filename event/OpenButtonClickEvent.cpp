@@ -26,7 +26,7 @@ void OpenButtonClick::openInterface() {
 	this->openedInterface = pcap_open(open_interface,			// 監聽設備名稱
 						1500,				// portion of the packet to capture (only the first 100 bytes)
 						PCAP_OPENFLAG_PROMISCUOUS, 	// promiscuous mode
-						1000,				// 讀取最大逾時
+						100,				// 讀取最大逾時
 						NULL,				// authentication on the remote machine
 						errbuf				// 錯誤訊息存放
                         );
