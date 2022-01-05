@@ -34,6 +34,7 @@ void SendButtonClick::sendMessage() {
 		
 		// 把輸入的訊息裝進封包內
         message = userName + "： " + message;
+        int userNameUtf8Length = (userName + "： ").toUtf8().size();
 
         QByteArray messageUft8 = message.toUtf8();
 
@@ -71,8 +72,7 @@ void SendButtonClick::sendMessage() {
             pcap_sendpacket(global_openedInterface, packet, packetTotalLength);
         }
         
-        
-
+    
         sendBar->getMessageLine()->setText("");
         chatRoom->getChatRoom()->scrollToBottom();
         number++;
