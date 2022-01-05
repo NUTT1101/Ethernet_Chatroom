@@ -14,10 +14,11 @@ class ChatRoom : public QWidget {
         ChatRoom(QWidget *parent);
         ~ChatRoom();
         QListWidget *getChatRoom();
+        void sendMessage(std::string message);
 };
 
 ChatRoom::ChatRoom(QWidget *parent) {
-    this->view->setFont(QFont("Microsoft JhengHei", 11));
+    this->view->setFont(QFont("Microsoft JhengHei", 9));
     this->view->addItem("🟢 頁面初始化完成!!!");
     this->view->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->view->setFixedWidth(950);
@@ -35,4 +36,10 @@ ChatRoom::~ChatRoom() {}
 
 QListWidget *ChatRoom::getChatRoom() {
     return this->view;
+}
+
+void ChatRoom::sendMessage(std::string message) {
+    this->view->addItem(QString::fromStdString(message));
+    
+    this->view->scrollToBottom();
 }

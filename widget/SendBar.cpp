@@ -4,20 +4,28 @@
 #include <QLineEdit>
 #include <QKeyEvent>
 #include <QMessageBox>
+#include <QComboBox>
+#include <QFileDialog>
 
 class SendBar : public QWidget {
     private:
         QGridLayout *layout = new QGridLayout;    
         QLineEdit *messageLine = new QLineEdit;
-        QPushButton *button = new QPushButton("Send");
+        QPushButton *sendButton = new QPushButton("發送");
+        QPushButton *thumbSupButton = new QPushButton("👍");
+        QPushButton *emojisButton = new QPushButton("😀．．．");
+        QPushButton *selectFileButton = new QPushButton("選擇檔案...");
         QWidget *parent;
 
     public:
         SendBar(QWidget *parent);
         ~SendBar();
+
         QLineEdit *getMessageLine();
         QPushButton *getSendButton();
-        void testEvent(QKeyEvent *event);
+        QPushButton *getThumbSupButton();
+        QPushButton *getEmojisButton();
+        QPushButton *getSelectFileButton();
 };
 
 SendBar::SendBar(QWidget *parent) {
@@ -25,11 +33,23 @@ SendBar::SendBar(QWidget *parent) {
     this->messageLine->setFixedHeight(30);
     this->messageLine->setFixedWidth(600);
 
-    this->button->setFixedHeight(30);
-    this->button->setFixedWidth(100);
+    this->sendButton->setFixedHeight(30);
+    this->sendButton->setFixedWidth(100);
+
+    this->thumbSupButton->setFixedHeight(30);
+    this->thumbSupButton->setFixedWidth(40);
+    
+    this->emojisButton->setFixedHeight(30);
+    this->emojisButton->setFixedWidth(80);
+
+    this->selectFileButton->setFixedHeight(30);
+    this->selectFileButton->setFixedWidth(100);
 
     this->layout->addWidget(this->messageLine, 0, 0, Qt::AlignLeft);
-    this->layout->addWidget(this->button, 0, 1, Qt::AlignLeft);
+    this->layout->addWidget(this->sendButton, 0, 1, Qt::AlignLeft);
+    this->layout->addWidget(this->thumbSupButton, 0, 2, Qt::AlignLeft);
+    this->layout->addWidget(this->emojisButton, 0, 3, Qt::AlignLeft);
+    this->layout->addWidget(this->selectFileButton, 0, 4, Qt::AlignLeft);
     
     this->setLayout(this->layout);
     this->setParent(this->parent);
@@ -42,5 +62,17 @@ QLineEdit *SendBar::getMessageLine() {
 }
 
 QPushButton *SendBar::getSendButton() {
-    return this->button;
+    return this->sendButton;
+}
+
+QPushButton *SendBar::getThumbSupButton() {
+    return this->thumbSupButton;
+}
+        
+QPushButton *SendBar::getEmojisButton() {
+    return this->emojisButton;
+}
+
+QPushButton *SendBar::getSelectFileButton() {
+    return this->selectFileButton;
 }

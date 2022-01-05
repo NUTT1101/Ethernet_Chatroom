@@ -3,6 +3,9 @@
 #include "./event/CloseButtonClickEvent.cpp"
 #include "./event/SendButtonClickEvent.cpp"
 #include "./event/MessageLineEnterPressEvent.cpp"
+#include "./event/EmojiButtonClickEvent.cpp"
+#include "./event/SelectFileButtonClickEvent.cpp"
+#include "./event/ThumbSupButtonClickEvent.cpp"
 
 
 int main(int argc, char *argv[]) {
@@ -17,11 +20,18 @@ int main(int argc, char *argv[]) {
     CloseButtonClick closeButton;
     SendButtonClick sendButton;
     MessageLineEnterPress enterPress;
+    ThumbSupButtonClick thumpSupClick;
+    EmojiButtonClick emojiClick;
+    SelectFileButtonClick selectFileClick;
     
     QObject::connect(menu->getOpenButton(), SIGNAL(clicked()), &openButton, SLOT(openInterface()));
     QObject::connect(menu->getCloseButton(), SIGNAL(clicked()), &closeButton, SLOT(closeInterface()));
     QObject::connect(sendBar->getSendButton(), SIGNAL(clicked()), &sendButton, SLOT(sendMessage()));
     QObject::connect(sendBar->getMessageLine(), SIGNAL(returnPressed()), &enterPress, SLOT(clickSendButton()));
+    QObject::connect(sendBar->getThumbSupButton(), SIGNAL(clicked()), &thumpSupClick, SLOT(sendThumbSup()));
+    QObject::connect(sendBar->getEmojisButton(), SIGNAL(clicked()), &emojiClick, SLOT(selectEmoji()));
+    QObject::connect(sendBar->getSelectFileButton(), SIGNAL(clicked()), &selectFileClick, SLOT(selectFile()));
+    
 
     QGridLayout *layout = new QGridLayout();
     layout->addWidget(menu, 0, 0, Qt::AlignTop);

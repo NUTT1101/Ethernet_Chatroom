@@ -1,7 +1,7 @@
 #include "ChatRoomThread.hpp"
 #include <string>
 #include <sstream>
-#include <ctime>
+#include <QMap>
 
 ChatRoomThread::ChatRoomThread(QListWidget *view) {
     this->view = view;
@@ -9,29 +9,51 @@ ChatRoomThread::ChatRoomThread(QListWidget *view) {
 
 ChatRoomThread::~ChatRoomThread() {}
 
+QMap<int, std::string> undonePacket; 
 void ChatRoomThread::run() {
-    pcap_pkthdr *packet_header;
+    pcap_pkthdr *packetHeader;
     const u_char *packet;
     int resource;
     
-    while ((resource = pcap_next_ex(global_openedInterface, &packet_header, &packet)) >= 0) {
+    while ((resource = pcap_next_ex(global_openedInterface, &packetHeader, &packet)) >= 0) {
         if (global_openedInterface == nullptr) break;
         if (resource == 0) continue;
         
-        if (packet[12] != 0xff && packet[13] != 0x01) continue;
+        std::string d_mac = "";
+        for (int i=0; i < 6; i++) {
+            d_mac += packet[i];
+        }
         
+        if (packet[12] != 0xff && packet[13] != 0x0e && d_mac != "ffffffffffff") continue;
+
         std::string message = "";
-        int packet_length = packet[14] * 255 + packet[15];
+        int packetLength = packet[14] * 255 + packet[15];
+
+        int packetNumber = packet[16] * 255 + packet[17];
+        if (packet[18] == 1 && packet[19] != 0) {
+            for (int i=20; i < packetLength + 20; i++) {
+                std::stringstream byte;
+
+                byte << (char) ((int) packet[i]);
+                message += byte.str();
+            
+            }
+            undonePacket[packetNumber] += message;     
+            continue;
+        } else if (undonePacket.value(packetNumber) != "" && packet[19] == 0){
+            chatRoom->sendMessage(undonePacket[packetNumber]);
+            undonePacket.remove(packetNumber);
+            continue;
+        }
         
-        for (int i=16; i < packet_length + 16; i++) {
+        for (int i=20; i < packetLength + 20; i++) {
             std::stringstream byte;
 
             byte << (char) ((int) packet[i]);
             message += byte.str();
 		}
 
-        chatRoom->getChatRoom()->scrollToBottom();
-        this->view->addItem(QString::fromStdString(message));
+        chatRoom->sendMessage(message);
     }
     
     this->quit();
