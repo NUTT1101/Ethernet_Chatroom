@@ -1,7 +1,4 @@
 #include "ChatRoomThread.hpp"
-#include <string>
-#include <sstream>
-#include <QMap>
 
 ChatRoomThread::ChatRoomThread(QTextBrowser *view) {
     this->view = view;

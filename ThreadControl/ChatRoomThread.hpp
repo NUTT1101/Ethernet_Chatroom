@@ -1,6 +1,9 @@
+#include <pcap.h>
 #include <QThread>
 #include <QTextBrowser>
-#include <pcap.h>
+#include <string>
+#include <sstream>
+#include <QMap>
 
 class ChatRoomThread : public QThread {
     Q_OBJECT

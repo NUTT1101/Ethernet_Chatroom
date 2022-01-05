@@ -2,10 +2,8 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QLineEdit>
-#include <QKeyEvent>
 #include <QMessageBox>
 #include <QComboBox>
-#include <QFileDialog>
 
 class SendBar : public QWidget {
     private:

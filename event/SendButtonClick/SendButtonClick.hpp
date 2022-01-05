@@ -1,4 +1,5 @@
 #include <QObject>
+#include "pcap.h"
 
 class SendButtonClick : public QObject {
     Q_OBJECT

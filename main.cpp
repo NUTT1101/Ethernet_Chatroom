@@ -7,7 +7,6 @@
 #include "./event/SelectFileButtonClickEvent.cpp"
 #include "./event/ThumbSupButtonClickEvent.cpp"
 
-
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     

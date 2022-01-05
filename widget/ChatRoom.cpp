@@ -1,9 +1,7 @@
 #include <Qwidget>
-#include <QListView>
 #include <QTextBrowser>
 #include <QGridLayout>
 #include <QScrollBar>
-
 #include <QThread>
 
 class ChatRoom : public QWidget {
