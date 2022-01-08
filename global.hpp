@@ -5,7 +5,7 @@
 #include "./widget/InterfaceDropDownMenu.cpp"
 #include "./widget/ChatRoom.cpp"
 
-int number = 0;
+unsigned long long number = 0;
 QString userName = "";
 MainWindow *mainWindow;
 SendBar *sendBar;

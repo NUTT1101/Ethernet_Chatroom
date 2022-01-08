@@ -21,8 +21,8 @@ ChatRoom::ChatRoom(QWidget *parent) {
     this->view->append("🟢 頁面初始化完成!!!");
 
     this->view->setFixedWidth(950);
-    this->view->setFixedHeight(350);
-    
+    this->view->setFixedHeight(550);
+
     QGridLayout *layout = new QGridLayout();
     layout->addWidget(this->view);
 

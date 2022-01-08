@@ -9,7 +9,7 @@ class MainWindow : public QWidget {
 };
 
 MainWindow::MainWindow() {
-    this->setFixedHeight(500);
+    this->setFixedHeight(700);
     this->setFixedWidth(1000);
     this->setWindowTitle("聊天室");
     this->setFont(QFont("Microsoft JhengHei"));

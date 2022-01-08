@@ -30,30 +30,26 @@ int packetSend(QString userName, QString message, bool clearMessageLine) {
 
         int messageLength = messageUft8.size();
 
-        packet[14] = messageLength / 255; // 原始封包長度(不包含前20bytes)
-        packet[15] = messageLength % 255; // 原始封包長度(不包含前20bytes)
-        packet[16] = number; // 封包編號，用於紀錄用
+        packet[14] = messageLength / 256; // 原始封包長度(不包含前20bytes)
+        packet[15] = messageLength % 256; // 原始封包長度(不包含前20bytes)
+        packet[16] = number / 256; // 封包編號，用於紀錄用
+        packet[17] = number % 256; // 封包編號，用於紀錄用
 
         int packetTotalLength = messageLength + 20;
 
         if (packetTotalLength > 1500) {
             int currentMessage = 20;
-            packet[17] = packetTotalLength / 1500; // 封包完整度，如若到0代表封包結束
-            packet[18] = packetTotalLength % 1500;
 
             while (packetTotalLength > 0) {
-                int currentLength = packetTotalLength > 1500 ? 1500 : packetTotalLength;
+                int currentLength = packetTotalLength > 1500 ? 1500 : packetTotalLength + 20;
                 for (int i = 20; i < currentLength; i++) {
                     packet[i] = (char) messageUft8.at(currentMessage++ - 20);
                 }
-                packet[14] = (currentLength - 20) / 255;
-                packet[15] = (currentLength - 20) % 255;
+                packet[14] = (currentLength - 20) / 256;
+                packet[15] = (currentLength - 20) % 256;
 
                 pcap_sendpacket(global_openedInterface, packet, currentLength);
                 packetTotalLength -= 1480;
-                
-                packet[17] = packetTotalLength / 1500;
-                packet[18] = packetTotalLength % 1500;
             }
             
         } else {
@@ -68,8 +64,6 @@ int packetSend(QString userName, QString message, bool clearMessageLine) {
             sendBar->getMessageLine()->setText("");
         }
         
-        chatRoom->getChatRoom()->verticalScrollBar()->setValue(
-            chatRoom->getChatRoom()->verticalScrollBar()->maximum());
         number++;
     }
 
