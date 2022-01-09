@@ -3,13 +3,7 @@ int packetSend(QString userName, QString message, bool clearMessageLine) {
         return -1;
     }
     
-    if (message != "") {
-        /* if (message.size() > 1584) {
-            QMessageBox::warning(mainWindow, "warning", 
-                "<h3>發送的文字上限不能超過一千五個字</h3>", QMessageBox::Ok);
-            return;
-        } */
-        
+    if (message != "") {        
         u_char packet[1500] = {'\0'};
 
         for (int i=0; i < 6; i++) {

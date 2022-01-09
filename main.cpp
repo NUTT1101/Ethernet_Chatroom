@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     SelectFileButtonClick selectFileClick;
 
     QObject::connect(menu->getOpenButton(), SIGNAL(clicked()), &openButton, SLOT(openInterface()));
-    QObject::connect(menu->getCloseButton(), SIGNAL(clicked()), &clearButton, SLOT(clearChatRoom()));
+    QObject::connect(menu->getClearButton(), SIGNAL(clicked()), &clearButton, SLOT(clearChatRoom()));
     QObject::connect(sendBar->getSendButton(), SIGNAL(clicked()), &sendButton, SLOT(sendMessage()));
     QObject::connect(sendBar->getMessageLine(), SIGNAL(returnPressed()), &enterPress, SLOT(clickSendButton()));
     QObject::connect(sendBar->getThumbSupButton(), SIGNAL(clicked()), &thumpSupClick, SLOT(sendThumbSup()));

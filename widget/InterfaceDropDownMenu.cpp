@@ -26,7 +26,7 @@ class InterfaceDropDownMenu : public QWidget {
         void menuSetup(QComboBox *menu, QMap<QString, QString> allDevices);
         QComboBox *getInterfaceMenu();
         QPushButton *getOpenButton();
-        QPushButton *getCloseButton();
+        QPushButton *getClearButton();
         QMap<QString, QString> getAllDevicesMap();
 };
 
@@ -106,7 +106,7 @@ QPushButton *InterfaceDropDownMenu::getOpenButton() {
     return this->openButton;
 }
 
-QPushButton *InterfaceDropDownMenu::getCloseButton() {
+QPushButton *InterfaceDropDownMenu::getClearButton() {
     return this->closeButton;
 }
 
