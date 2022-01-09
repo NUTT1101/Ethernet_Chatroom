@@ -6,7 +6,7 @@ SendButtonClick::~SendButtonClick() {}
 
 void SendButtonClick::sendMessage() {
     QString message = sendBar->getMessageLine()->text();
-    if (message.size() > 2000) {
+    if (message.toUtf8().size() > 2000) {
         QMessageBox::warning(mainWindow, "warning", 
             "<h3>發送的文字應小於2000個</h3>", QMessageBox::Ok);
         return;
