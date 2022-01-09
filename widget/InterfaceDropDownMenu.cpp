@@ -15,7 +15,7 @@ class InterfaceDropDownMenu : public QWidget {
         
         QComboBox *menu = new QComboBox();
         QPushButton *openButton = new QPushButton("開啟");
-        QPushButton *closeButton = new QPushButton("關閉");
+        QPushButton *closeButton = new QPushButton("清空聊天室");
         
         QMap<QString, QString> allDevices;
         QMap<QString, QString> getAllDevices();

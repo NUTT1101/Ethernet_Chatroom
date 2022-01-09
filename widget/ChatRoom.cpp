@@ -25,7 +25,6 @@ ChatRoom::ChatRoom(QWidget *parent) {
 
     QGridLayout *layout = new QGridLayout();
     layout->addWidget(this->view);
-
     this->setLayout(layout);
     this->setParent(parent);
 }

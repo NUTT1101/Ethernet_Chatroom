@@ -1,20 +1,21 @@
 #include "./SelectFileButtonClick/SelectFileButtonClick.hpp"
-#include <QFileDialog>
-#include <QMessageBox>
-#include <pcap.h>
 
 SelectFileButtonClick::SelectFileButtonClick() { }
 SelectFileButtonClick::~SelectFileButtonClick() { }
 
 void SelectFileButtonClick::selectFile() {
-    QString fileName = QFileDialog::getOpenFileName(mainWindow,
-        tr("選擇一個圖檔"), "C:/", tr("Image Files (*)"));
-
     if (global_openedInterface == nullptr) {
+        QMessageBox::warning(mainWindow, "warning", 
+            "<h3>沒有開介面你是要送個毛?</h3>", QMessageBox::Ok);
         return;
     }
+
+    QString fileName = QFileDialog::getOpenFileName(mainWindow,
+        tr("選擇一個要傳送的檔案"), ".", tr("Image Files (*)"));
     
     u_char packet[1500] = {'\0'};
+
+    if (fileName == "") return;
 
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly)) {
@@ -46,7 +47,7 @@ void SelectFileButtonClick::selectFile() {
 
     // 檔名傳進去
     QString fileNameS = QFileInfo(file).baseName();
-
+    
     int j;
     for (j=20; j < fileNameS.size() + 20; j++) {
         packet[j] = fileNameS.at(j - 20).unicode();
@@ -76,6 +77,7 @@ void SelectFileButtonClick::selectFile() {
     int packetParameterLength = b;
 
     pcap_sendpacket(global_openedInterface, packet, packetParameterLength);
+    file.close();
 
     if (packetLength > 1500) {
         int packetTotalLength = packetLength;
@@ -101,11 +103,10 @@ void SelectFileButtonClick::selectFile() {
         }
 
         pcap_sendpacket(global_openedInterface, packet, packetLength + 20);
-    }   
+    }
 
-    /* if (clearMessageLine) {
-        sendBar->getMessageLine()->setText("");
-    } */
+    chatRoom->getChatRoom()->
+        append("<a style=\"color: green;\">" + file.fileName() + " 發送成功!" + "</a>");
     
     number++;
 

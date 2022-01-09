@@ -64,6 +64,8 @@ int packetSend(QString userName, QString message, bool clearMessageLine) {
             sendBar->getMessageLine()->setText("");
         }
         
+        chatRoom->getChatRoom()->verticalScrollBar()->setValue(
+            chatRoom->getChatRoom()->verticalScrollBar()->maximum());
         number++;
     }
 

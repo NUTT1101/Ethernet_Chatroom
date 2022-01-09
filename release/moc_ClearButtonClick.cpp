@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'EmojiDropMenuClick.hpp'
+** Meta object code from reading C++ file 'ClearButtonClick.hpp'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.2)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../event/EmojiDropMenuClick/EmojiDropMenuClick.hpp"
+#include "../event/ClearButtonClick/ClearButtonClick.hpp"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'EmojiDropMenuClick.hpp' doesn't include <QObject>."
+#error "The header file 'ClearButtonClick.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.15.2. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,27 +21,27 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_EmojiDropMenuClick_t {
+struct qt_meta_stringdata_ClearButtonClick_t {
     QByteArrayData data[3];
     char stringdata0[32];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_EmojiDropMenuClick_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_ClearButtonClick_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_EmojiDropMenuClick_t qt_meta_stringdata_EmojiDropMenuClick = {
+static const qt_meta_stringdata_ClearButtonClick_t qt_meta_stringdata_ClearButtonClick = {
     {
-QT_MOC_LITERAL(0, 0, 18), // "EmojiDropMenuClick"
-QT_MOC_LITERAL(1, 19, 11), // "selectEmoji"
+QT_MOC_LITERAL(0, 0, 16), // "ClearButtonClick"
+QT_MOC_LITERAL(1, 17, 13), // "clearChatRoom"
 QT_MOC_LITERAL(2, 31, 0) // ""
 
     },
-    "EmojiDropMenuClick\0selectEmoji\0"
+    "ClearButtonClick\0clearChatRoom\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_EmojiDropMenuClick[] = {
+static const uint qt_meta_data_ClearButtonClick[] = {
 
  // content:
        8,       // revision
@@ -63,43 +63,43 @@ static const uint qt_meta_data_EmojiDropMenuClick[] = {
        0        // eod
 };
 
-void EmojiDropMenuClick::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void ClearButtonClick::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<EmojiDropMenuClick *>(_o);
+        auto *_t = static_cast<ClearButtonClick *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->selectEmoji(); break;
+        case 0: _t->clearChatRoom(); break;
         default: ;
         }
     }
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject EmojiDropMenuClick::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject ClearButtonClick::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_meta_stringdata_EmojiDropMenuClick.data,
-    qt_meta_data_EmojiDropMenuClick,
+    qt_meta_stringdata_ClearButtonClick.data,
+    qt_meta_data_ClearButtonClick,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *EmojiDropMenuClick::metaObject() const
+const QMetaObject *ClearButtonClick::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *EmojiDropMenuClick::qt_metacast(const char *_clname)
+void *ClearButtonClick::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_EmojiDropMenuClick.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_ClearButtonClick.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int EmojiDropMenuClick::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int ClearButtonClick::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)

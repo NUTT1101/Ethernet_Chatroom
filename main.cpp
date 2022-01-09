@@ -1,6 +1,6 @@
 #include "global.hpp"
 #include "./event/OpenButtonClickEvent.cpp"
-#include "./event/CloseButtonClickEvent.cpp"
+#include "./event/ClearButtonClickEvent.cpp"
 #include "./event/SendButtonClickEvent.cpp"
 #include "./event/MessageLineEnterPressEvent.cpp"
 #include "./event/EmojiButtonClickEvent.cpp"
@@ -16,15 +16,15 @@ int main(int argc, char *argv[]) {
     chatRoom = new ChatRoom(mainWindow);
 
     OpenButtonClick openButton;
-    CloseButtonClick closeButton;
+    ClearButtonClick clearButton;
     SendButtonClick sendButton;
     MessageLineEnterPress enterPress;
     ThumbSupButtonClick thumpSupClick;
     EmojiButtonClick emojiClick;
     SelectFileButtonClick selectFileClick;
-    
+
     QObject::connect(menu->getOpenButton(), SIGNAL(clicked()), &openButton, SLOT(openInterface()));
-    QObject::connect(menu->getCloseButton(), SIGNAL(clicked()), &closeButton, SLOT(closeInterface()));
+    QObject::connect(menu->getCloseButton(), SIGNAL(clicked()), &clearButton, SLOT(clearChatRoom()));
     QObject::connect(sendBar->getSendButton(), SIGNAL(clicked()), &sendButton, SLOT(sendMessage()));
     QObject::connect(sendBar->getMessageLine(), SIGNAL(returnPressed()), &enterPress, SLOT(clickSendButton()));
     QObject::connect(sendBar->getThumbSupButton(), SIGNAL(clicked()), &thumpSupClick, SLOT(sendThumbSup()));
@@ -41,7 +41,10 @@ int main(int argc, char *argv[]) {
 
     while (userName == "") {
         QString name = QInputDialog::getText(mainWindow, "輸入欄", "輸入您的名字: ");
-        if (name.size() > 10) continue;
+        if (name.size() > 10) {
+            QMessageBox::warning(mainWindow, "警告", "輸入的名字長度不可大於 十");
+            continue;
+        }
         
         for (int i=0; i < name.size(); i++) {
             userName[i] = name.at(i).unicode();

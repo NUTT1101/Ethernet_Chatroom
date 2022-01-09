@@ -2,16 +2,16 @@
 #include <pcap.h>
 #include <QMessageBox>
 
-class CloseButtonClick : public QObject {
+class ClearButtonClick : public QObject {
     Q_OBJECT
 
     private:
         bool status;
 
     public slots:
-        void closeInterface();        
+        void clearChatRoom();        
 
     public:
-        CloseButtonClick();
-        ~CloseButtonClick();
+        ClearButtonClick();
+        ~ClearButtonClick();
 };

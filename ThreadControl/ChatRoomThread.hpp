@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <QMap>
+#include <QDir>
 
 class ChatRoomThread : public QThread {
     Q_OBJECT

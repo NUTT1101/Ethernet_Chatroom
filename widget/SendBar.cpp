@@ -11,8 +11,8 @@ class SendBar : public QWidget {
         QLineEdit *messageLine = new QLineEdit;
         QPushButton *sendButton = new QPushButton("發送");
         QPushButton *thumbSupButton = new QPushButton("👍");
-        QPushButton *emojisButton = new QPushButton("😀．．．");
-        QPushButton *selectFileButton = new QPushButton("選擇檔案...");
+        QPushButton *emojisButton = new QPushButton("傳圖片...");
+        QPushButton *selectFileButton = new QPushButton("傳檔案...");
         QWidget *parent;
 
     public:

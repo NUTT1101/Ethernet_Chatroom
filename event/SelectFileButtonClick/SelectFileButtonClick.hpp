@@ -1,4 +1,6 @@
 #include <QObject>
+#include <QFileDialog>
+#include <pcap.h>
 
 class SelectFileButtonClick : public QObject {
     Q_OBJECT
