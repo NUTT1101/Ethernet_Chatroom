@@ -28,6 +28,7 @@ int packetSend(QString userName, QString message, bool clearMessageLine) {
         packet[15] = messageLength % 256; // 原始封包長度(不包含前20bytes)
         packet[16] = number / 256; // 封包編號，用於紀錄用
         packet[17] = number % 256; // 封包編號，用於紀錄用
+        packet[19] = 0;
 
         int packetTotalLength = messageLength + 20;
 
@@ -41,7 +42,8 @@ int packetSend(QString userName, QString message, bool clearMessageLine) {
                 }
                 packet[14] = (currentLength - 20) / 256;
                 packet[15] = (currentLength - 20) % 256;
-
+                
+                packet_encryption(packet, spn);
                 pcap_sendpacket(global_openedInterface, packet, currentLength);
                 packetTotalLength -= 1480;
             }
@@ -51,6 +53,7 @@ int packetSend(QString userName, QString message, bool clearMessageLine) {
                 packet[i] = (char) messageUft8.at(i - 20);
             }
 
+            packet_encryption(packet, spn);
             pcap_sendpacket(global_openedInterface, packet, packetTotalLength);
         }        
 

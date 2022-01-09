@@ -4,8 +4,10 @@
 #include "./widget/SendBar.cpp"
 #include "./widget/InterfaceDropDownMenu.cpp"
 #include "./widget/ChatRoom.cpp"
+#include "./SP_Neteork.cpp"
 
 unsigned long long number = 0;
+SPN_255 spn;
 QString userName = "";
 MainWindow *mainWindow;
 SendBar *sendBar;

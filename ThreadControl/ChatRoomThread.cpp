@@ -11,7 +11,7 @@ QMap<int, QByteArray> undoneFiles;
 
 void ChatRoomThread::run() {
     pcap_pkthdr *packetHeader;
-    const u_char *packet;
+    u_char *packet;
     int resource;
     
     while ((resource = pcap_next_ex(global_openedInterface, &packetHeader, &packet)) >= 0) {
@@ -31,6 +31,9 @@ void ChatRoomThread::run() {
         if (packet[12] != 0xff && packet[13] != 0x0e && d_mac != "ffffffffffff") continue;
 
         std::string message = "";
+        
+        if (packet[19] == 0) packet_decrypt(packet, spn);
+
         int packetLength = packet[14] * 256 + packet[15];
         int packetNumber = packet[16] * 256 + packet[17];
         
