@@ -33,7 +33,7 @@ void ChatRoomThread::run() {
         int packetNumber = packet[16] * 256 + packet[17];
         
         if (packet[19] == 1 || packet[19] == 2) {
-            for (unsigned int i=20; i < (packetHeader->caplen + 20 > 1500 ? 1500 : packetHeader->caplen); i++) {
+            for (unsigned int i=20; i < (packetHeader->caplen == 1500 ? 1500 : packetHeader->caplen); i++) {
                 undoneFiles[packetNumber].append(packet[i]);
             }
             
@@ -103,7 +103,7 @@ void ChatRoomThread::run() {
         }
         
         
-        for (int i=20; i < (packetLength + 20 > 1500 ? 1500 : packetLength + 20); i++) {
+        for (int i=20; i < (packetLength + 20 >= 1500 ? 1500 : packetLength + 20); i++) {
             std::stringstream byte;
 
             byte << (char) ((int) packet[i]);
