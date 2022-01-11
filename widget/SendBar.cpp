@@ -7,12 +7,12 @@
 
 class SendBar : public QWidget {
     private:
-        QGridLayout *layout = new QGridLayout;    
-        QLineEdit *messageLine = new QLineEdit;
-        QPushButton *sendButton = new QPushButton("發送");
-        QPushButton *thumbSupButton = new QPushButton("👍");
-        QPushButton *emojisButton = new QPushButton("傳圖片...");
-        QPushButton *selectFileButton = new QPushButton("傳檔案...");
+        QGridLayout *layout;    
+        QLineEdit *messageLine;
+        QPushButton *sendButton;
+        QPushButton *thumbSupButton;
+        QPushButton *emojisButton;
+        QPushButton *selectFileButton;
         QWidget *parent;
 
     public:
@@ -27,6 +27,13 @@ class SendBar : public QWidget {
 };
 
 SendBar::SendBar(QWidget *parent) {
+    layout = new QGridLayout();    
+    messageLine = new QLineEdit();
+    sendButton = new QPushButton("發送");
+    thumbSupButton = new QPushButton("👍");
+    emojisButton = new QPushButton("傳圖片...");
+    selectFileButton = new QPushButton("傳檔案...");
+
     this->parent = parent;
     this->messageLine->setFixedHeight(30);
     this->messageLine->setFixedWidth(600);

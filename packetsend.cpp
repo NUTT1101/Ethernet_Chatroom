@@ -36,14 +36,14 @@ int packetSend(QString userName, QString message, bool clearMessageLine) {
             int currentMessage = 20;
 
             while (packetTotalLength > 0) {
-                int currentLength = packetTotalLength > 1500 ? 1500 : packetTotalLength + 20;
+                int currentLength = packetTotalLength > 1500 ? 1500 : packetTotalLength;
                 for (int i = 20; i < currentLength; i++) {
                     packet[i] = (char) messageUft8.at(currentMessage++ - 20);
                 }
                 packet[14] = (currentLength - 20) / 256;
                 packet[15] = (currentLength - 20) % 256;
                 
-                packet_encryption(packet, spn);
+                packet_encryption(packet, spn, currentLength);
                 pcap_sendpacket(global_openedInterface, packet, currentLength);
                 packetTotalLength -= 1480;
             }
@@ -53,7 +53,7 @@ int packetSend(QString userName, QString message, bool clearMessageLine) {
                 packet[i] = (char) messageUft8.at(i - 20);
             }
 
-            packet_encryption(packet, spn);
+            packet_encryption(packet, spn, packetTotalLength);
             pcap_sendpacket(global_openedInterface, packet, packetTotalLength);
         }        
 

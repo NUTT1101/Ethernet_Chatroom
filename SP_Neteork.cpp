@@ -37,6 +37,7 @@ int SPN_255::key(int data)
   if(data == 0) {return 0xee;}
   if(data == 1) {return 0x44;}
   if(data == 2) {return 0x19;}
+  return 0;
 }
 int SPN_255::turn_1(int data)
 {
@@ -56,6 +57,7 @@ int SPN_255::turn_1(int data)
   if(data == 13) {return 12;}
   if(data == 14) {return 14;}
   if(data == 15) {return 0;}
+  return 0;
 }
 int SPN_255::turn_2(int data)
 {
@@ -75,6 +77,7 @@ int SPN_255::turn_2(int data)
   if(data == 13) {return 6;}
   if(data == 14) {return 14;}
   if(data == 15) {return 7;}
+  return 0;
 }
 int SPN_255::change_1(int data)
 {
@@ -86,6 +89,7 @@ int SPN_255::change_1(int data)
   if(data == 5) {return 7;}
   if(data == 6) {return 5;}
   if(data == 7) {return 6;}
+  return 0;
 }
 int SPN_255::change_2(int data)
 {
@@ -97,6 +101,7 @@ int SPN_255::change_2(int data)
   if(data == 5) {return 6;}
   if(data == 6) {return 7;}
   if(data == 7) {return 5;}
+  return 0;
 }
 
 void SPN_255::turn_bitall_bit8()
@@ -206,21 +211,19 @@ unsigned char SPN_255::decrypt(char data)
   return bitnum_all;
 }
 
-u_char* packet_encryption(u_char* enc,SPN_255 spn)
+void packet_encryption(u_char* enc,SPN_255 spn, unsigned int packetLength)
 {
-  for(int i = 20; i < 1500; i++)
+  for(unsigned int i = 20; i < packetLength; i++)
   {
     enc[i] = spn.encryption(enc[i]);
   }
-  return enc;
 }
-u_char* packet_decrypt(u_char* dec,SPN_255 spn)
+void packet_decrypt(u_char* dec,SPN_255 spn, unsigned int packetLength)
 {
-  for(int i = 20; i < 1500; i++)
+  for(unsigned int i = 20; i < packetLength; i++)
   {
     dec[i] = spn.decrypt(dec[i]);
   }
-  return dec;
 }
 /*
 int main()

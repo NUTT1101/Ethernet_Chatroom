@@ -10,12 +10,12 @@
 
 class InterfaceDropDownMenu : public QWidget {
     private:
-        QGridLayout *layout = new QGridLayout;
-        QGridLayout *buttonLayout = new QGridLayout(); 
+        QGridLayout *layout;
+        QGridLayout *buttonLayout; 
         
-        QComboBox *menu = new QComboBox();
-        QPushButton *openButton = new QPushButton("開啟");
-        QPushButton *closeButton = new QPushButton("清空聊天室");
+        QComboBox *menu;
+        QPushButton *openButton;
+        QPushButton *closeButton;
         
         QMap<QString, QString> allDevices;
         QMap<QString, QString> getAllDevices();
@@ -31,6 +31,12 @@ class InterfaceDropDownMenu : public QWidget {
 };
 
 InterfaceDropDownMenu::InterfaceDropDownMenu(QWidget *parent) {
+    layout = new QGridLayout();
+    buttonLayout = new QGridLayout(); 
+    menu = new QComboBox();
+    openButton = new QPushButton("開啟");
+    closeButton = new QPushButton("清空聊天室");
+
     this->allDevices = this->getAllDevices();
     
     this->menu->setFixedWidth(500);

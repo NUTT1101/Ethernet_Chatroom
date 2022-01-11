@@ -80,12 +80,12 @@ void SelectFileButtonClick::selectFile() {
     file.close();
 
     if (packetLength > 1500) {
-        int packetTotalLength = packetLength;
+        int packetTotalLength = packetLength + 20;
         int currentMessage = 20;
         packet[18] = 0;
 
         while (packetTotalLength > 0) {
-            int currentLength = packetTotalLength > 1500 ? 1500 : packetTotalLength + 20;
+            int currentLength = packetTotalLength > 1500 ? 1500 : packetTotalLength;
             for (int i = 20; i < currentLength; i++) {
                 packet[i] = (char) fileByteArray.at(currentMessage++ - 20);
             }
@@ -102,12 +102,11 @@ void SelectFileButtonClick::selectFile() {
             packet[i] = fileByteArray[i - 20];
         }
 
-        pcap_sendpacket(global_openedInterface, packet, packetLength + 20);
+        pcap_sendpacket(global_openedInterface, packet, packetLength);
     }
 
     chatRoom->getChatRoom()->
         append("<a style=\"color: green;\">" + file.fileName() + " 發送成功!" + "</a>");
     
     number++;
-
 }

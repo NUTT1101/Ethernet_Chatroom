@@ -7,7 +7,7 @@
 class ChatRoom : public QWidget {
 
     private:
-        QTextBrowser *view = new QTextBrowser;
+        QTextBrowser *view;
         
     public:
         ChatRoom(QWidget *parent);
@@ -17,6 +17,8 @@ class ChatRoom : public QWidget {
 };
 
 ChatRoom::ChatRoom(QWidget *parent) {
+    view = new QTextBrowser();
+    
     this->view->setFont(QFont("Microsoft JhengHei", 10));
     this->view->append("🟢 頁面初始化完成!!!");
 
@@ -36,5 +38,6 @@ QTextBrowser *ChatRoom::getChatRoom() {
 }
 
 void ChatRoom::sendMessage(std::string message) {
-    this->view->append(QString::fromStdString(message));
+    QString m = QString::fromStdString(message);
+    this->view->append(m);
 }

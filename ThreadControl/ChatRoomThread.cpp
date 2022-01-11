@@ -27,9 +27,8 @@ void ChatRoomThread::run() {
 
         std::string message = "";
         
-        if (packet[19] == 0) packet_decrypt(packet, spn);
+        if (packet[19] == 0) packet_decrypt(packet, spn, packetHeader->caplen);
 
-        int packetLength = packet[14] * 256 + packet[15];
         int packetNumber = packet[16] * 256 + packet[17];
         
         if (packet[19] == 1 || packet[19] == 2) {
@@ -71,28 +70,28 @@ void ChatRoomThread::run() {
                 for (int i = index + 1; i < undoneFiles[packetNumber].size(); i++) {
                     fileData.append(undoneFiles[packetNumber].at(i));
                 }
+                undoneFiles.remove(packetNumber);
 
                 QString fileFullName = fileName + "." + fileEx;
                 QFile file("./received/" + fileFullName);
                 int fileNumber = 1;
                 while (file.exists()) {
                     fileFullName = fileName + "(" + QVariant(fileNumber++).toString() + ")." + fileEx;
-                    file.setFileName("./received/" + fileFullName) ;
+                    file.setFileName("./received/" + fileFullName);
                 }
 
                 file.open(QIODevice::WriteOnly);
                 file.write(fileData);
                 
-                undoneFiles.remove(packetNumber);
                 if (packet[19] == 2) {
                     chatRoom->getChatRoom()->append(sendUser + "：");
                     chatRoom->getChatRoom()->
-                        append("<img src=\"./received/" + fileFullName + "\" width=\"500\">");
+                        append("<div><img src=\"./received/" + fileFullName + "\" width=\"768\" height=\"432\"></div>");
                     file.remove();
 
                 } else if (sendUser != userName) {
                     chatRoom->getChatRoom()->
-                        append("<a style=\"color: red;\">您收到來自" + sendUser + "的檔案" + fileFullName + "</a>");
+                        append("<div><a style=\"color: red;\">您收到來自" + sendUser + "的檔案" + fileFullName + "</a></div>");
                 }
                 file.close();
             }
@@ -103,10 +102,10 @@ void ChatRoomThread::run() {
         }
         
         
-        for (int i=20; i < (packetLength + 20 >= 1500 ? 1500 : packetLength + 20); i++) {
+        for (unsigned int i=20; i < packetHeader->caplen; i++) {
             std::stringstream byte;
-
-            byte << (char) ((int) packet[i]);
+            byte << (char) packet[i];
+            
             message += byte.str();
 		}
 

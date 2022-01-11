@@ -12,7 +12,7 @@ void EmojiButtonClick::selectEmoji() {
     }
     
     QString fileName = QFileDialog::getOpenFileName(mainWindow,
-        tr("選擇一個要傳送的圖片"), ".", tr("Image Files (*.png *.jpg)"));
+        tr("選擇一個要傳送的圖片"), ".", tr("Image Files (*.jpg)"));
     
     u_char packet[1500] = {'\0'};
 
@@ -86,7 +86,7 @@ void EmojiButtonClick::selectEmoji() {
         packet[18] = 0;
 
         while (packetTotalLength > 0) {
-            int currentLength = packetTotalLength > 1500 ? 1500 : packetTotalLength + 20;
+            int currentLength = packetTotalLength > 1500 ? 1500 : packetTotalLength;
             for (int i = 20; i < currentLength; i++) {
                 packet[i] = (char) fileByteArray.at(currentMessage++ - 20);
             }
@@ -107,7 +107,7 @@ void EmojiButtonClick::selectEmoji() {
     }
 
     chatRoom->getChatRoom()->
-        append("<a style=\"color: green;\">圖片發送成功!</a>");
+        append("<div><a style=\"color: green;\">圖片發送成功!</a></div>");
     
     number++;
 }
