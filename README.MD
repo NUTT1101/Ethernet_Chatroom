@@ -13,7 +13,7 @@
 ### 開發相關:
 
 - 使用語言:
-    - C ()
+    - C (npcap api)
     - Cpp
 
 - 使用的Library:
