@@ -1,7 +1,5 @@
 # Ethernet Chatroom
 
-### WIP
-
 ***
 ### 簡介:
 
